@@ -146,13 +146,15 @@ public class Customer_Server extends HttpServlet {
 						+ "("+cust_id+","+tech_id+","+product_id+",'initiated','"+now+"')";
 				//st.executeUpdate(query);
 				
-				query ="select tech_id, name from tech where tech_id ="+tech_id;
+				query ="select tech_id, name,lat,lng from tech where tech_id ="+tech_id;
 				rs = st.executeQuery(query);
 				
 				while(rs.next()){
 					
 					tech.put("tech_id",rs.getInt(1));
 					tech.put("tech_name",rs.getString(2));
+					tech.put("lat", rs.getDouble(3));
+					tech.put("lng", rs.getDouble(4));
 				}
 				
 			} catch (Exception e) {
